@@ -2,3 +2,45 @@
 title: "Authentication"
 description: "Authenticate Petstore API requests with the X-API-Key header."
 ---
+
+The Petstore API authenticates write requests with an API key passed in the `X-API-Key` request header.
+
+```text
+X-API-Key: <your-api-key>
+```
+
+<Warning>
+  Never commit your API key to source control or expose it in client-side code. Load it from an environment variable and keep it on the server.
+</Warning>
+
+## Example request
+
+The following Node.js example reads the key from an environment variable and fetches a pet by id:
+
+```javascript
+const res = await fetch("https://petstore3.swagger.io/api/v3/pet/1", {
+  headers: {
+    "X-API-Key": process.env.PETSTORE_API_KEY,
+  },
+});
+
+console.log(await res.json());
+```
+
+A missing or invalid key returns `401 Unauthorized`.
+
+## Troubleshoot authentication
+
+If a request fails with `401 Unauthorized`, check these cases.
+
+### Invalid key
+
+The `X-API-Key` value is wrong, expired, or revoked. Verify the key and retry.
+
+<Warning>
+  Rotate the key if you suspect it was exposed, then update your environment variable.
+</Warning>
+
+### Missing header
+
+The `X-API-Key` header was not sent. Confirm your client adds it to every request.

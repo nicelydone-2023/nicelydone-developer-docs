@@ -39,5 +39,9 @@
     "socials": {
       "github": "https://github.com/nicelydone-2023/nicelydone-developer-docs"
     }
+  },
+  "feedback": {
+    "thumbsRating": true,
+    "suggestEdit": true
   }
 }

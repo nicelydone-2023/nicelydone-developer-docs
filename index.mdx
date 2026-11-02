@@ -1,0 +1,40 @@
+---
+title: "Introduction"
+description: "The Nicelydone developer portal for the Swagger Petstore API."
+---
+
+The **Nicelydone developer portal** documents the public [Swagger Petstore](https://petstore3.swagger.io/) API. Use it to authenticate, create pets, and explore the full API reference.
+
+## Base URL
+
+All requests are sent to:
+
+```
+https://petstore3.swagger.io/api/v3
+```
+
+## Quickstart
+
+<Steps>
+  <Step title="Get an API key">
+    Every write request is authenticated with an `X-API-Key` header. See
+    [Authentication](/guides/authentication) for details.
+  </Step>
+  <Step title="Create a pet">
+    Send `POST /pet` with a JSON body to add a pet to the store. See
+    [Create a pet](/guides/create-a-pet).
+  </Step>
+  <Step title="Explore the API reference">
+    Browse every endpoint, parameter, and schema in the generated
+    [API Reference](/api-reference/pet/add-a-new-pet-to-the-store).
+  </Step>
+</Steps>
+
+<CardGroup cols={2}>
+  <Card title="Authentication" icon="key" href="/guides/authentication">
+    Authenticate requests with the `X-API-Key` header.
+  </Card>
+  <Card title="Create a pet" icon="dog" href="/guides/create-a-pet">
+    Add a new pet with a Node.js `fetch` example.
+  </Card>
+</CardGroup>

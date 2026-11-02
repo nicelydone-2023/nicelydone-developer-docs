@@ -1,0 +1,54 @@
+---
+title: "Create a pet"
+description: "Add a new pet to the store with POST /pet."
+---
+
+Create a new pet with `POST /pet`. The request body is a JSON `Pet` object; the
+response returns the created pet, including its generated `id`.
+
+## Parameters
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `name` | string | Yes | The pet's name, e.g. `"Rex"`. |
+| `photoUrls` | string[] | Yes | One or more image URLs for the pet. |
+| `status` | string | No | Availability: `available`, `pending`, or `sold`. |
+| `category` | object | No | The pet's category, e.g. `{ "id": 1, "name": "Dogs" }`. |
+| `tags` | object[] | No | Tags attached to the pet. |
+
+## Node.js example
+
+This `fetch` example sends `POST /pet` and prints the returned pet:
+
+```javascript
+const res = await fetch("https://petstore3.swagger.io/api/v3/pet", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    "X-API-Key": process.env.PETSTORE_API_KEY,
+  },
+  body: JSON.stringify({
+    name: "Rex",
+    photoUrls: ["https://example.com/rex.png"],
+    status: "available",
+    category: { id: 1, name: "Dogs" },
+    tags: [{ id: 1, name: "good-boy" }],
+  }),
+});
+
+const pet = await res.json();
+console.log("Created pet:", pet);
+```
+
+## Example response
+
+```json
+{
+  "id": 10,
+  "name": "Rex",
+  "category": { "id": 1, "name": "Dogs" },
+  "photoUrls": ["https://example.com/rex.png"],
+  "tags": [{ "id": 1, "name": "good-boy" }],
+  "status": "available"
+}
+```
